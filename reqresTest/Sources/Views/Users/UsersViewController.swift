@@ -9,9 +9,17 @@ import UIKit
 
 class UsersViewController: UITableViewController {
     private let dataSource = UsersDataSource()
-    private lazy var viewModel : UsersViewModel = {
+    private lazy var viewModel: UsersViewModel = {
         let viewModel = UsersViewModel(dataSource: dataSource)
         return viewModel
+    }()
+    
+    private lazy var loadMoreButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 45))
+        button.setTitleColor(.blue, for: .normal)
+        button.setTitle("Load more users", for: .normal)
+        button.addTarget(self, action: #selector(getMoreUsers(_:)), for: .touchUpInside)
+        return button
     }()
     
     override func viewDidLoad() {
@@ -65,8 +73,30 @@ class UsersViewController: UITableViewController {
         viewModel.fetchUsers()
     }
     
+    @objc private func getMoreUsers(_ sender: Any) {
+        // Get More Users Data
+        viewModel.fetchMoreUsers()
+    }
+    
     private func startRefreshingUsers() {
         refreshControl?.beginRefreshing()
         refreshControl?.sendActions(for: .valueChanged)
+    }
+}
+
+extension UsersViewController {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastSectionIndex = tableView.numberOfSections - 1
+        let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
+        
+        if indexPath.section == lastSectionIndex,
+           indexPath.row == lastRowIndex {
+            if viewModel.hasMoreUsersToLoad {
+                self.tableView.tableFooterView = loadMoreButton
+                self.tableView.tableFooterView?.isHidden = false
+            } else {
+                self.tableView.tableFooterView?.isHidden = true
+            }
+        }
     }
 }

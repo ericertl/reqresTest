@@ -13,7 +13,7 @@ final class ReqresService {
 
 // MARK: Public methods.
 extension ReqresService {
-    func getUsers(page: Int, completion: ((Result<[User], Error>) -> ())? = nil) {
+    func getUsers(page: Int, completion: ((Result<Users, Error>) -> ())? = nil) {
         if let internetConnection = delegate?.hasInternetConnection(), !internetConnection {
             completion?(.failure(NetworkLayerError.noInternetConnection))
             return
@@ -22,7 +22,7 @@ extension ReqresService {
         NetworkLayer.request(router: Router.getUsers(page: page)) { (result: Result<Users, Error>) in
             switch result {
             case .success(let users):
-                completion?(.success(users.data))
+                completion?(.success(users))
             case .failure(let error):
                 completion?(.failure(error))
             }
