@@ -8,6 +8,7 @@
 import Foundation
 
 struct UsersViewModel {
+    weak var dataSource: GenericDataSource<User>?
     private let networkManager: NetworkManager = NetworkManager()
     
     var onErrorHandling: ((Error?) -> Void)?
@@ -18,7 +19,7 @@ struct UsersViewModel {
         networkManager.reqresService.getUsers(page: page, completion: { (result: Result<[User], Error>) in
             switch result {
             case .success(let users):
-                print("Success getting users")
+                self.dataSource?.data.value = users
             case .failure(let error):
                 self.onErrorHandling?(error)
             }

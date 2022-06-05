@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bau-bf-bHo">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Users-->
+        <scene sceneID="cUW-po-6Ha">
+            <objects>
+                <tableViewController id="Fya-u6-0kL" customClass="UsersViewController" customModule="reqresTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dSA-Ij-sKK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="65" id="XQf-EM-06V" customClass="UserCell" customModule="reqresTest" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="65"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XQf-EM-06V" id="6tb-YP-6gb">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SDm-D5-uLM">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="65"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YdU-T3-HML">
+                                                    <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="YdU-T3-HML" secondAttribute="height" multiplier="1:1" id="VZ9-DH-c25"/>
+                                                        <constraint firstAttribute="height" constant="65" id="nvk-Ej-dp9"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FhD-RX-cDE">
+                                                    <rect key="frame" x="73" y="0.0" width="301" height="65"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="George Bluth" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8WB-eq-WRm">
+                                                            <rect key="frame" x="0.0" y="0.0" width="301" height="31.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="george.bluth@reqres.in" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cax-67-Fh3">
+                                                            <rect key="frame" x="0.0" y="39.5" width="301" height="25.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="8WB-eq-WRm" secondAttribute="trailing" id="2WS-ir-2dU"/>
+                                                        <constraint firstItem="8WB-eq-WRm" firstAttribute="top" secondItem="FhD-RX-cDE" secondAttribute="top" id="JpF-uc-3xJ"/>
+                                                        <constraint firstItem="8WB-eq-WRm" firstAttribute="leading" secondItem="FhD-RX-cDE" secondAttribute="leading" id="ryj-gY-5av"/>
+                                                        <constraint firstAttribute="centerY" secondItem="8WB-eq-WRm" secondAttribute="bottom" constant="1" id="uvM-Of-EGr"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="SDm-D5-uLM" secondAttribute="trailing" constant="20" symbolic="YES" id="FDl-bs-DVz"/>
+                                        <constraint firstItem="SDm-D5-uLM" firstAttribute="leading" secondItem="6tb-YP-6gb" secondAttribute="leading" constant="20" symbolic="YES" id="lK2-5H-Pbc"/>
+                                        <constraint firstAttribute="bottom" secondItem="SDm-D5-uLM" secondAttribute="bottom" id="mfb-dG-t43"/>
+                                        <constraint firstItem="SDm-D5-uLM" firstAttribute="top" secondItem="6tb-YP-6gb" secondAttribute="top" id="o5A-bq-hPl"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="emailAddressLabel" destination="Cax-67-Fh3" id="8DH-4y-HpF"/>
+                                    <outlet property="nameLabel" destination="8WB-eq-WRm" id="Y4N-XT-D8z"/>
+                                    <outlet property="userImageView" destination="YdU-T3-HML" id="ck4-zB-rzQ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Fya-u6-0kL" id="9ZH-MS-G4I"/>
+                            <outlet property="delegate" destination="Fya-u6-0kL" id="tLz-UA-XV6"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Users" id="fVt-iu-6fe"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LDe-hH-0F3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-442.02898550724643" y="-652.23214285714278"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="brg-uq-y0b">
+            <objects>
+                <navigationController id="bau-bf-bHo" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SOC-rN-zw3">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Fya-u6-0kL" kind="relationship" relationship="rootViewController" id="2RH-fC-fjg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7r1-bk-EYb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1290" y="-652"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
