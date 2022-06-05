@@ -12,6 +12,7 @@ struct UsersViewModel {
     private let networkManager: NetworkManager = NetworkManager()
     
     var onErrorHandling: ((Error?) -> Void)?
+    var onUserDeleted: ((Int) -> Void)?
     
     // MARK: - Fetch Users
     
@@ -20,6 +21,20 @@ struct UsersViewModel {
             switch result {
             case .success(let users):
                 self.dataSource?.data.value = users
+            case .failure(let error):
+                self.onErrorHandling?(error)
+            }
+        })
+    }
+    
+    func deleteUser(userId: Int) {
+        networkManager.reqresService.deleteUser(userId: userId, completion: { (result: Result<Void, Error>) in
+            switch result {
+            case .success():
+                if let index = self.dataSource?.data.value.firstIndex(where: { $0.id == userId }) {
+                    self.dataSource?.data.value.remove(at: index)
+                }
+                self.onUserDeleted?(userId)
             case .failure(let error):
                 self.onErrorHandling?(error)
             }

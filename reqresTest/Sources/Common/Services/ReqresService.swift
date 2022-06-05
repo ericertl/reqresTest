@@ -44,4 +44,20 @@ extension ReqresService {
             }
         }
     }
+    
+    func deleteUser(userId: Int, completion: ((Result<Void, Error>) -> ())? = nil) {
+        if let internetConnection = delegate?.hasInternetConnection(), !internetConnection {
+            completion?(.failure(NetworkLayerError.noInternetConnection))
+            return
+        }
+        
+        NetworkLayer.request(router: Router.deleteUser(userId: userId)) {  (result: Result<NoReply, Error>) in
+            switch result {
+            case .success(_):
+                completion?(.success(Void()))
+            case .failure(let error):
+                completion?(.failure(error))
+            }
+        }
+    }
 }

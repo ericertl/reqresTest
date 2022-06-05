@@ -30,6 +30,7 @@
 		F9AF34CE284D09E500D62210 /* UsersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF34CD284D09E500D62210 /* UsersDataSource.swift */; };
 		F9AF34D1284D0B8100D62210 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF34D0284D0B8100D62210 /* UserCell.swift */; };
 		F9AF34D3284D0CDF00D62210 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF34D2284D0CDF00D62210 /* UsersViewController.swift */; };
+		F9AF34D8284D4ED300D62210 /* NoReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF34D7284D4ED300D62210 /* NoReply.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		F9AF34CD284D09E500D62210 /* UsersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataSource.swift; sourceTree = "<group>"; };
 		F9AF34D0284D0B8100D62210 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		F9AF34D2284D0CDF00D62210 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		F9AF34D7284D4ED300D62210 /* NoReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoReply.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 		F9AF34B5284CF96E00D62210 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F9AF34D7284D4ED300D62210 /* NoReply.swift */,
 				F9AF34BA284CFCEA00D62210 /* SingleUser.swift */,
 				F9AF34B6284CF9AC00D62210 /* User.swift */,
 				F9AF34B8284CFA7D00D62210 /* Users.swift */,
@@ -421,6 +424,7 @@
 				F9AF34C7284D081200D62210 /* GenericDataSource.swift in Sources */,
 				F9AF34AC284CF52C00D62210 /* NetworkingLayer.swift in Sources */,
 				F9AF34CB284D084400D62210 /* ImageLoader.swift in Sources */,
+				F9AF34D8284D4ED300D62210 /* NoReply.swift in Sources */,
 				F9AF34CE284D09E500D62210 /* UsersDataSource.swift in Sources */,
 				F9AF34BE284CFDCA00D62210 /* NetworkManager.swift in Sources */,
 				F9AF34C9284D082900D62210 /* DynamicValue.swift in Sources */,

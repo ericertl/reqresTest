@@ -11,11 +11,13 @@ enum Router {
     
     case getUsers(page: Int)
     case getUser(userId: Int)
+    case deleteUser(userId: Int)
     
     var scheme: String {
         switch self {
         case .getUsers,
-             .getUser:
+             .getUser,
+             .deleteUser:
             return "https"
         }
     }
@@ -23,7 +25,8 @@ enum Router {
     var host: String {
         switch self {
         case .getUsers,
-             .getUser:
+             .getUser,
+             .deleteUser:
             return "reqres.in"
         }
     }
@@ -34,17 +37,20 @@ enum Router {
             return "/api/users"
         case .getUser(let userId):
             return "/api/users/\(userId)"
+        case .deleteUser(let userId):
+            return "/api/users/\(userId)"
         }
     }
     
-    var parameters: [URLQueryItem] {
+    var parameters: [URLQueryItem]? {
         switch self {
         case .getUsers(let page):
             return [
                 URLQueryItem(name: "page", value: "\(page)")
             ]
-        case .getUser:
-            return []
+        case .getUser,
+             .deleteUser:
+            return nil
         }
     }
     
@@ -53,6 +59,8 @@ enum Router {
         case .getUsers,
              .getUser:
             return "GET"
+        case .deleteUser:
+            return "DELETE"
         }
     }
     

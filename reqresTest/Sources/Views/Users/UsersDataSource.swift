@@ -10,6 +10,7 @@ import UIKit
 
 class UsersDataSource: GenericDataSource<User> {
     private var imageLoader = ImageLoader()
+    var onDeleteUser: ((User) -> Void)?
 }
 
 extension UsersDataSource: UITableViewDataSource {
@@ -19,7 +20,14 @@ extension UsersDataSource: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.value.count
+        let numberOfRows = data.value.count
+        if numberOfRows == 0 {
+            tableView.setEmptyView(title: "There are no users.", message: "Looks like there are no users to display.")
+        }
+        else {
+            tableView.restore()
+        }
+        return numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,4 +49,14 @@ extension UsersDataSource: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            let user = data.value[indexPath.row]
+            onDeleteUser?(user)
+        }
+    }
 }

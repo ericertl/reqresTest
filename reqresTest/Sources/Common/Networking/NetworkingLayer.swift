@@ -106,8 +106,15 @@ struct NetworkLayer {
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let responseObject = try decoder.decode(T.self, from: data)
-                completion(.success(responseObject))
+                
+                if data.isEmpty,
+                   let emptyJsonData = "{}".data(using: .utf8) {
+                    let responseObject = try decoder.decode(T.self, from: emptyJsonData)
+                    completion(.success(responseObject))
+                } else {
+                    let responseObject = try decoder.decode(T.self, from: data)
+                    completion(.success(responseObject))
+                }
             } catch let error {
                 completion(.failure(error))
                 print(error.localizedDescription)
