@@ -99,4 +99,12 @@ extension UsersViewController {
             }
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let userViewModel = viewModel.userViewModelForIndexPath(indexPath: indexPath) else {
+            return
+        }
+        let userViewController = UserViewController(viewModel: userViewModel)
+        navigationController?.pushViewController(userViewController, animated: true)
+    }
 }

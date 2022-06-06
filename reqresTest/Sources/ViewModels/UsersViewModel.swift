@@ -71,4 +71,11 @@ final class UsersViewModel: NSObject {
             }
         })
     }
+    
+    func userViewModelForIndexPath(indexPath: IndexPath) -> UserViewModel? {
+        guard let user = dataSource?.data.value[indexPath.row] else {
+            return nil
+        }
+        return UserViewModel(user: user)
+    }
 }
